@@ -1,0 +1,331 @@
+$animation-duration: 200ms;
+$animation-easing-in: cubic-bezier(0.5, 1, 0.89, 1);
+$animation-easing-out: cubic-bezier(0.11, 0, 0.5, 0);
+
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: FadeIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FadeOut {
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: FadeOut $animation-duration $animation-easing-out;
+}
+
+@keyframes SlideDownIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.slide-down-in {
+    animation: SlideDownIn $animation-duration $animation-easing-in;
+}
+
+@keyframes SlideDownOut {
+    100% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+.slide-down-out {
+    animation: SlideDownOut $animation-duration $animation-easing-out;
+}
+
+@keyframes SlideUpIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+.slide-up-in {
+    animation: SlideUpIn $animation-duration $animation-easing-out;
+}
+
+@keyframes SlideUpOut {
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.slide-up-out {
+    animation: SlideUpOut $animation-duration $animation-easing-out;
+}
+
+@keyframes SlideLeftIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+
+.slide-left-in {
+    animation: SlideLeftIn $animation-duration $animation-easing-out;
+}
+
+@keyframes SlideLeftOut {
+    100% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+.slide-left-out {
+    animation: SlideLeftOut $animation-duration $animation-easing-out;
+}
+
+@keyframes SlideRightIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+.slide-right-in {
+    animation: SlideRightIn $animation-duration $animation-easing-out;
+}
+
+@keyframes SlideRightOut {
+    100% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+
+.slide-right-out {
+    animation: SlideRightOut $animation-duration $animation-easing-out;
+}
+
+@keyframes ScaleUpIn {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+}
+
+.scale-up-in {
+    animation: ScaleUpIn $animation-duration $animation-easing-out;
+}
+
+@keyframes ScaleUpOut {
+    100% {
+        opacity: 0;
+        scale: 2;
+    }
+}
+
+.scale-up-out {
+    animation: ScaleUpOut $animation-duration $animation-easing-out;
+}
+
+@keyframes ScaleDownIn {
+    0% {
+        opacity: 0;
+        scale: 2;
+    }
+}
+
+.scale-down-in {
+    animation: ScaleDownIn $animation-duration $animation-easing-out;
+}
+
+@keyframes ScaleDownOut {
+    100% {
+        opacity: 0;
+        scale: 0;
+    }
+}
+
+.scale-down-out {
+    animation: ScaleDownOut $animation-duration $animation-easing-out;
+}
+
+@keyframes FlipFrontDownIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(-45deg) translateY(-50%);
+    }
+}
+
+.flip-front-down-in {
+    animation: FlipFrontDownIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipFrontDownOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(45deg) translateY(50%);
+    }
+}
+
+.flip-front-down-out {
+    animation: FlipFrontDownOut $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackDownIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(45deg) translateY(-50%);
+    }
+}
+
+.flip-back-down-in {
+    animation: FlipBackDownIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackDownOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(-45deg) translateY(50%);
+    }
+}
+
+.flip-back-down-out {
+    animation: FlipBackDownOut $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipFrontUpIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(45deg) translateY(50%);
+    }
+}
+
+.flip-front-up-in {
+    animation: FlipFrontUpIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipFrontUpOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(-45deg) translateY(-50%);
+    }
+}
+
+.flip-front-up-out {
+    animation: FlipFrontUpOut $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackUpIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(-45deg) translateY(50%);
+    }
+}
+
+.flip-back-up-in {
+    animation: FlipBackUpIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackUpOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateX(45deg) translateY(-50%);
+    }
+}
+
+.flip-back-up-out {
+    animation: FlipBackUpOut $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackLeftIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(-45deg) translateX(-50%);
+    }
+}
+
+.flip-back-left-in {
+    animation: FlipBackLeftIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackLeftOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(45deg) translateX(50%);
+    }
+}
+
+.flip-back-left-out {
+    animation: FlipBackLeftOut $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackRightIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(45deg) translateX(50%);
+    }
+}
+
+.flip-back-right-in {
+    animation: FlipBackRightIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipBackRightOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(-45deg) translateX(-50%);
+    }
+}
+
+.flip-back-right-out {
+    animation: FlipBackRightOut $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipFrontLeftIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(-45deg) translateX(50%);
+    }
+}
+
+.flip-front-left-in {
+    animation: FlipFrontLeftIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipFrontLeftOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(45deg) translateX(-50%);
+    }
+}
+
+.flip-front-left-out {
+    animation: FlipFrontLeftOut $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipFrontRightIn {
+    0% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(45deg) translateX(-50%);
+    }
+}
+
+.flip-front-right-in {
+    animation: FlipFrontRightIn $animation-duration $animation-easing-in;
+}
+
+@keyframes FlipFrontRightOut {
+    100% {
+        opacity: 0;
+        transform: perspective(10cm) rotateY(-45deg) translateX(50%);
+    }
+}
+
+.flip-front-right-out {
+    animation: FlipFrontRightOut $animation-duration $animation-easing-in;
+}

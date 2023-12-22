@@ -1,0 +1,9 @@
+{
+    "title": "Cherry Picking",
+    "description": "Changes the texture of cake to remove the large cherry in the center.",
+    "author": {
+        "discord": "webaccount284"
+    },
+    "category": "aesthetic",
+    "version": "1.20"
+}

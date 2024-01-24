@@ -15,8 +15,8 @@ dependencies:
     specifier: ^2.7.32
     version: 2.7.32
   bloom:
-    specifier: link:bloom
-    version: link:bloom
+    specifier: link:../bloom
+    version: link:../bloom
   deepsignal:
     specifier: ^1.3.6
     version: 1.3.6(@preact/signals@1.2.2)(preact@10.19.3)

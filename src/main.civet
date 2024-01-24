@@ -1,0 +1,6 @@
+import bloom/stylesheet
+import {render} from preact
+import App from ./App.civet
+import ./main.styl
+
+render(<App />, document.getElementById("app")!)

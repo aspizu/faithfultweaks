@@ -1,1 +1,129 @@
-{"customOptionsBackgrounds":["dirt","stone"],"tweaks":{"alternateBlockDestruction":{"data":{"title":"Alternate Block Destruction","description":"Changes the breaking animation to a messy ring around the outside.","author":{"discord":"webaccount284","github":null,"email":null,"link":null},"category":"aesthetic","version":"1.20"},"files":["minecraft/textures/block/destroy_stage_0.png","minecraft/textures/block/destroy_stage_1.png","minecraft/textures/block/destroy_stage_2.png","minecraft/textures/block/destroy_stage_3.png","minecraft/textures/block/destroy_stage_4.png","minecraft/textures/block/destroy_stage_5.png","minecraft/textures/block/destroy_stage_6.png","minecraft/textures/block/destroy_stage_7.png","minecraft/textures/block/destroy_stage_8.png","minecraft/textures/block/destroy_stage_9.png"],"previewFiles":["header.png"],"x64support":false},"blackNetherBricks":{"data":{"title":"Black Nether Bricks","description":"Changes the textures of nether bricks to make them black.","author":{"discord":"webaccount284","github":null,"email":null,"link":null},"category":"aesthetic","version":"1.20"},"files":["minecraft/textures/block/chiseled_nether_bricks.png","minecraft/textures/block/cracked_nether_bricks.png","minecraft/textures/block/nether_bricks.png","minecraft/textures/item/nether_brick.png"],"previewFiles":["0.png","1.jpg"],"x64support":false},"cherryPicking":{"data":{"title":"Cherry Picking","description":"Changes the texture of cake to remove the large cherry in the center.","author":{"discord":"webaccount284","github":null,"email":null,"link":null},"category":"aesthetic","version":"1.20"},"files":["minecraft/textures/block/cake_top.png","minecraft/textures/item/cake.png"],"previewFiles":["0.jpg"],"x64support":false},"solidHoney":{"data":{"title":"Solid Honey","description":"Removes transparency from honey blocks.","author":{"discord":"webaccount284","github":null,"email":null,"link":null},"category":"aesthetic","version":"1.20"},"files":["minecraft/models/block/honey_block.json","minecraft/textures/block/honey_block_bottom.png","minecraft/textures/block/honey_block_side.png","minecraft/textures/block/honey_block_top.png"],"previewFiles":[],"x64support":false},"unbundeledDriedKelp":{"data":{"title":"Unbundled Dried Kelp","description":"Removes the white strings around dried kelp.","author":{"discord":"webaccount284","github":null,"email":null,"link":null},"category":"aesthetic","version":"1.20"},"files":["minecraft/textures/block/dried_kelp_bottom.png","minecraft/textures/block/dried_kelp_side.png","minecraft/textures/block/dried_kelp_top.png"],"previewFiles":["0.jpg"],"x64support":false},"unbundledHayBales":{"data":{"title":"Unbundled Hay Bales","description":"Removes the red strings around hay bales.","author":{"discord":"webaccount284","github":null,"email":null,"link":null},"category":"aesthetic","version":"1.20"},"files":["minecraft/textures/block/hay_block_side.png"],"previewFiles":["0.jpg"],"x64support":false}}}
+{
+    "customOptionsBackgrounds": ["dirt", "stone"],
+    "tweaks": {
+        "alternateBlockDestruction": {
+            "data": {
+                "title": "Alternate Block Destruction",
+                "description": "Changes the breaking animation to a messy ring around the outside.",
+                "author": {
+                    "discord": "webaccount284",
+                    "github": "aspizu",
+                    "email": "aspizu@protonmail.com",
+                    "link": "https://aspizu.github.io/"
+                },
+                "category": "aesthetic",
+                "version": "1.20"
+            },
+            "files": [
+                "minecraft/textures/block/destroy_stage_0.png",
+                "minecraft/textures/block/destroy_stage_1.png",
+                "minecraft/textures/block/destroy_stage_2.png",
+                "minecraft/textures/block/destroy_stage_3.png",
+                "minecraft/textures/block/destroy_stage_4.png",
+                "minecraft/textures/block/destroy_stage_5.png",
+                "minecraft/textures/block/destroy_stage_6.png",
+                "minecraft/textures/block/destroy_stage_7.png",
+                "minecraft/textures/block/destroy_stage_8.png",
+                "minecraft/textures/block/destroy_stage_9.png"
+            ],
+            "x64support": false
+        },
+        "blackNetherBricks": {
+            "data": {
+                "title": "Black Nether Bricks",
+                "description": "Changes the textures of nether bricks to make them black.",
+                "author": {
+                    "discord": "webaccount284",
+                    "github": null,
+                    "email": null,
+                    "link": null
+                },
+                "category": "aesthetic",
+                "version": "1.20"
+            },
+            "files": [
+                "minecraft/textures/block/chiseled_nether_bricks.png",
+                "minecraft/textures/block/cracked_nether_bricks.png",
+                "minecraft/textures/block/nether_bricks.png",
+                "minecraft/textures/item/nether_brick.png"
+            ],
+            "x64support": false
+        },
+        "cherryPicking": {
+            "data": {
+                "title": "Cherry Picking",
+                "description": "Changes the texture of cake to remove the large cherry in the center.",
+                "author": {
+                    "discord": "webaccount284",
+                    "github": null,
+                    "email": null,
+                    "link": null
+                },
+                "category": "aesthetic",
+                "version": "1.20"
+            },
+            "files": [
+                "minecraft/textures/block/cake_top.png",
+                "minecraft/textures/item/cake.png"
+            ],
+            "x64support": false
+        },
+        "solidHoney": {
+            "data": {
+                "title": "Solid Honey",
+                "description": "Removes transparency from honey blocks.",
+                "author": {
+                    "discord": "webaccount284",
+                    "github": null,
+                    "email": null,
+                    "link": null
+                },
+                "category": "aesthetic",
+                "version": "1.20"
+            },
+            "files": [
+                "minecraft/models/block/honey_block.json",
+                "minecraft/textures/block/honey_block_bottom.png",
+                "minecraft/textures/block/honey_block_side.png",
+                "minecraft/textures/block/honey_block_top.png"
+            ],
+            "x64support": false
+        },
+        "unbundeledDriedKelp": {
+            "data": {
+                "title": "Unbundled Dried Kelp",
+                "description": "Removes the white strings around dried kelp.",
+                "author": {
+                    "discord": "webaccount284",
+                    "github": null,
+                    "email": null,
+                    "link": null
+                },
+                "category": "aesthetic",
+                "version": "1.20"
+            },
+            "files": [
+                "minecraft/textures/block/dried_kelp_bottom.png",
+                "minecraft/textures/block/dried_kelp_side.png",
+                "minecraft/textures/block/dried_kelp_top.png"
+            ],
+            "x64support": false
+        },
+        "unbundledHayBales": {
+            "data": {
+                "title": "Unbundled Hay Bales",
+                "description": "Removes the red strings around hay bales.",
+                "author": {
+                    "discord": "webaccount284",
+                    "github": null,
+                    "email": null,
+                    "link": null
+                },
+                "category": "aesthetic",
+                "version": "1.20"
+            },
+            "files": ["minecraft/textures/block/hay_block_side.png"],
+            "x64support": false
+        }
+    }
+}

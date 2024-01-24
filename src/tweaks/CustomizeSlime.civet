@@ -1,0 +1,81 @@
+import {useRef} from preact/hooks
+import {Row, Col, Text, Checkbox, Switch, PaletteButton} from bloom/components
+import {Flexpander, PaletteInput} from bloom/components
+import {customSlimeColor} from ../App.civet
+import type {PaletteInputHandle} from bloom/components/PaletteButton
+
+colors := [
+    "#FF6347" // Tomato
+    "#4682B4" // Steel Blue
+    "#FFA500" // Orange
+    "#8A2BE2" // Blue Violet
+    "#32CD32" // Lime Green
+    "#FF69B4" // Hot Pink
+    "#1E90FF" // Dodger Blue
+    "#FFD700" // Gold
+    "#00FF7F" // Spring Green
+    "#9932CC" // Dark Orchid
+    "#FF4500" // Orange Red
+    "#20B2AA" // Light Sea Green
+    "#BA55D3" // Medium Orchid
+    "#00CED1" // Dark Turquoise
+    "#F08080" // Light Coral
+    "#6A5ACD" // Slate Blue
+    "#3CB371" // Medium Sea Green
+    "#7B68EE" // Medium Slate Blue
+    "#FA8072" // Salmon
+    "#00FA9A" // Medium Spring Green
+]
+
+export default function CustomizeSlime()
+    customColorInput := useRef<PaletteInputHandle> null
+    <Col surface="card" padding=4 gap=4>
+        <Row gap=2>
+            <Col>
+                <Text size="lg" bold>Customize Slime</Text>
+                <Text size="sm" color="gray">
+                    {if customSlimeColor.value
+                    then "Custom slime color selected"
+                    else "No customization selected"}
+                </Text>
+            </Col>
+            <Flexpander />
+            <Switch
+                active=customSlimeColor.value?
+                onChange={ =>
+                    if customSlimeColor.value
+                        customSlimeColor.value = null
+                    else
+                        return if not customColorInput.current
+                        color := customColorInput.current.value
+                        return if not color
+                        customSlimeColor.value = {isCustom: true, color}
+                        customColorInput.current.scrollIntoView()
+                        customColorInput.current.click()
+                }
+            />
+        </Row>
+        <Row gap=2 vcenter>
+            <Checkbox />
+            <Text>Remove transparency</Text>
+        </Row>
+        <Row gap=2 wrap>
+            <PaletteInput
+                ref={customColorInput}
+                active={customSlimeColor.value?.isCustom}
+                onInput={(color) => customSlimeColor.value = {isCustom: true, color}}
+            />
+            {colors.map (color) =>
+                <PaletteButton
+                    key=color
+                    active={
+                        customSlimeColor.value?
+                        and not customSlimeColor.value.isCustom
+                        and customSlimeColor.value.color === color
+                    }
+                    {color}
+                    onClick={ => customSlimeColor.value = {isCustom: false, color}}
+                />
+            }
+        </Row>
+    </Col>

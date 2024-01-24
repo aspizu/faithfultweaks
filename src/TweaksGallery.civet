@@ -1,0 +1,44 @@
+import {useSignal} from @preact/signals
+import {Col, Icon, IconButton, Input} from bloom/components
+import {data} from ./App.civet
+import Tweak from ./components/Tweak.civet
+import CustomizeOptionsBackground from ./tweaks/CustomizeOptionsBackground.civet
+import CustomizeSlime from ./tweaks/CustomizeSlime.civet
+
+export default function TweaksGallery()
+    search := useSignal("")
+    <Col gap=4>
+        <Input
+            {search.value}
+            onInput={(ev) =>
+                search.value = (ev.target as HTMLInputElement).value
+            }
+            placeholder="Search"
+        >
+            {if search.value then
+            <IconButton variant="overlay" size="sm" onClick={=> search.value = ""}>
+                close
+            </IconButton>
+            }
+            <Icon size="sm">search</Icon>
+        </Input>
+        <div
+            style={
+                display: "grid"
+                gap: "1rem"
+                gridTemplateColumns: "repeat(auto-fill, minmax(25rem, 1fr))"
+            }
+        >
+            <CustomizeOptionsBackground />
+            <CustomizeSlime />
+            {/* <MenuPanorama /> */}
+            {Object.entries data.value.tweaks
+                .filter [_, tweak] =>
+                    tweak.data.title
+                        .toLocaleLowerCase()
+                        .startsWith search.value.trim().toLocaleLowerCase()
+                .map [name, tweak] =>
+                    <Tweak key={name} {name} {tweak} />
+            }
+        </div>
+    </Col>

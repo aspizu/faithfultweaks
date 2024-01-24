@@ -1,4 +1,4 @@
-import Toggle from "../components/Toggle"
+import Switch from "bloom/components/Switch"
 
 export default function MenuPanorama() {
     return (
@@ -11,7 +11,7 @@ export default function MenuPanorama() {
                     </span>
                 </div>
                 <div class="flex-fill"></div>
-                <Toggle value />
+                <Switch />
             </div>
         </div>
     )

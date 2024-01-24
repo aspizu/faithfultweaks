@@ -1,0 +1,85 @@
+import {Row, Col, Text, Icon, Image, Badge, Flexpander, Switch} from bloom/components
+import {packVariant, tweaks} from ../App.civet
+import * as types from ../types/Data
+import discordMarkWhiteImage from "../assets/discord-mark-white.svg"
+import githubMarkWhiteImage from "../assets/github-mark-white.svg"
+
+export default function Tweak({
+    name
+    tweak
+}:{
+    name: string
+    tweak: types.Tweak
+})
+    supported := packVariant.value === "x32" or tweak.x64support
+    function toggleTweak()
+        newTweaks := new Set tweaks.value
+        if tweaks.value.has name
+            newTweaks.delete name
+        else
+            newTweaks.add name
+        tweaks.value = newTweaks
+    <Col surface="card" padding=4 gap=4>
+        <Row>
+            <Col>
+                <Text bold size="lg">
+                    {tweak.data.title}
+                </Text>
+                <Text color="gray">{tweak.data.description}</Text>
+            </Col>
+            <Flexpander />
+            <Switch
+                active=tweaks.value.has(name)
+                disabled=!supported
+                onChange=toggleTweak
+            />
+        </Row>
+        {packVariant.value === "x64" and not tweak.x64support and
+            <Row surface="warn" padding=2 gap=2 vcenter>
+                <Icon color="warn">error</Icon>
+                Not supported for x64 yet.
+            </Row>
+        }
+        {supported and
+            <Image src=`tweaks/${name}/${packVariant.value}/preview.png`/>
+        }
+        <Row wrap gap=2>
+            {tweak.data.author.discord and
+                <Badge
+                    size="sm"
+                    variant="inverted"
+                    style={
+                        background: "#5865F2"
+                    }
+                >
+                    <img src=githubMarkWhiteImage width="14rem" />
+                    @{tweak.data.author.discord}
+                </Badge>
+            }
+            {tweak.data.author.github and
+                <a href=`https://github.com/${tweak.data.author.github}`>
+                    <Badge
+                        button
+                        size="sm"
+                        variant="inverted"
+                        style={
+                            background: "#6e5494"
+                        }
+                    >
+                        <img src=discordMarkWhiteImage width="14rem" />
+                        @{tweak.data.author.github}
+                    </Badge>
+                </a>
+            }
+            {tweak.data.author.link and
+                <a href=tweak.data.author.link>
+                    <Badge size="sm" variant="link">
+                        {tweak.data.author.link}
+                    </Badge>
+                </a>
+            }
+            {tweak.data.author.email and
+                <Badge size="sm">{tweak.data.author.email}</Badge>
+            }
+        </Row>
+    </Col>

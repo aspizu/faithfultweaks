@@ -1,4 +1,10 @@
 import { useSignal } from "@preact/signals"
+import Box from "bloom/components/Box"
+import Button from "bloom/components/Button"
+import Flexpander from "bloom/components/Flexpander"
+import Icon from "bloom/components/Icon"
+import IconButton from "bloom/components/IconButton"
+import Text from "bloom/components/Text"
 import {
     customOptionsBackground,
     customSlimeColor,
@@ -7,6 +13,7 @@ import {
     tweaks,
 } from "./App"
 import { OptionTransition } from "./components/ViewTransition"
+import * as Data from "./types/Data"
 
 function removeAllTweaks() {
     customOptionsBackground.value = null
@@ -14,41 +21,89 @@ function removeAllTweaks() {
     tweaks.value = new Set()
 }
 
+function SelectedTweak({
+    text,
+    subtext,
+    onRemove,
+}: {
+    text: string
+    subtext?: string
+    onRemove: () => void
+}) {
+    return (
+        <Box surface="card" padding={2} gap={2}>
+            <Box column>
+                {text}
+                {subtext && (
+                    <Text size="sm" color="gray">
+                        {subtext}
+                    </Text>
+                )}
+            </Box>
+            <Flexpander />
+            <Box vcenter>
+                <IconButton variant="overlay" size="sm" onClick={onRemove}>
+                    close
+                </IconButton>
+            </Box>
+        </Box>
+    )
+}
+
+function CustomOptionsBackground({ texture }: { texture: string }) {
+    return (
+        <SelectedTweak
+            text="Customize options background"
+            subtext={`(${texture})`}
+            onRemove={() => {
+                customOptionsBackground.value = null
+            }}
+        />
+    )
+}
+
+function CustomSlimeColor({ color }: { color: string }) {
+    return (
+        <SelectedTweak
+            text="Customize slime color"
+            subtext={`(${color})`}
+            onRemove={() => {
+                customSlimeColor.value = null
+            }}
+        />
+    )
+}
+
+function Tweak({ name, tweak }: { name: string; tweak: Data.Tweak }) {
+    return (
+        <SelectedTweak
+            text={tweak.data.title}
+            onRemove={() => {
+                const v = new Set(tweaks.value)
+                v.delete(name)
+                tweaks.value = v
+            }}
+        />
+    )
+}
+
 export default function SideBar() {
     const removeAllModal = useSignal(false)
     return (
-        <div class="column g4">
-            <span class="subtext sm">
+        <Box column gap={4}>
+            <Text size="sm" color="gray">
                 {isTweaksSelected.value
                     ? "Selected tweaks"
                     : "Selected tweaks will appear here"}
-            </span>
+            </Text>
             <OptionTransition
                 inClass="flip-front-down-in"
                 outClass="scale-down-out"
             >
                 {customOptionsBackground.value !== null && (
-                    <div class="card row p2 g2">
-                        <div class="column">
-                            Customize options background
-                            <span class="sm subtext">
-                                ({customOptionsBackground.value.texture})
-                            </span>
-                        </div>
-                        <div class="flex-fill"></div>
-                        <div class="row vcenter">
-                            <button
-                                class="input-button"
-                                onClick={() => {
-                                    customOptionsBackground.value = null
-                                }}
-                            >
-                                <span class="material-symbols-outlined lg">
-                                    close
-                                </span>
-                            </button>
-                        </div>
-                    </div>
+                    <CustomOptionsBackground
+                        texture={customOptionsBackground.value.texture}
+                    />
                 )}
             </OptionTransition>
             <OptionTransition
@@ -56,27 +111,7 @@ export default function SideBar() {
                 outClass="scale-down-out"
             >
                 {customSlimeColor.value && (
-                    <div class="card row p2 g2">
-                        <div class="column">
-                            Customize Slime
-                            <span class="sm subtext">
-                                ({customSlimeColor.value.color})
-                            </span>
-                        </div>
-                        <div class="flex-fill"></div>
-                        <div class="row vcenter">
-                            <button
-                                class="input-button"
-                                onClick={() => {
-                                    customSlimeColor.value = null
-                                }}
-                            >
-                                <span class="material-symbols-outlined lg">
-                                    close
-                                </span>
-                            </button>
-                        </div>
-                    </div>
+                    <CustomSlimeColor color={customSlimeColor.value.color} />
                 )}
             </OptionTransition>
             {Object.entries(data.value.tweaks).map(([name, tweak]) => (
@@ -85,24 +120,7 @@ export default function SideBar() {
                     outClass="scale-down-out"
                 >
                     {tweaks.value.has(name) && (
-                        <div class="card row p2 g2">
-                            <span>{tweak.data.title}</span>
-                            <div class="flex-fill"></div>
-                            <div class="row vcenter">
-                                <button
-                                    class="input-button"
-                                    onClick={() => {
-                                        const v = new Set(tweaks.value)
-                                        v.delete(name)
-                                        tweaks.value = v
-                                    }}
-                                >
-                                    <span class="material-symbols-outlined lg">
-                                        close
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
+                        <Tweak name={name} tweak={tweak} />
                     )}
                 </OptionTransition>
             ))}
@@ -111,15 +129,15 @@ export default function SideBar() {
                 outClass="scale-down-out"
             >
                 {isTweaksSelected.value && (
-                    <button
-                        class="button vexpand"
+                    <Button
+                        iconLeft
                         onClick={() => {
                             removeAllModal.value = true
                         }}
                     >
-                        <span class="material-symbols-outlined">delete</span>
+                        <Icon>delete</Icon>
                         Remove All
-                    </button>
+                    </Button>
                 )}
             </OptionTransition>
             <OptionTransition inClass="fade-in" outClass="fade-out">
@@ -165,6 +183,6 @@ export default function SideBar() {
                     </div>
                 )}
             </OptionTransition>
-        </div>
+        </Box>
     )
 }

@@ -15,7 +15,6 @@ export interface Data {
 export interface Tweak {
   data: TweakData;
   files: string[];
-  previewFiles: string[];
   x64support: boolean;
   [k: string]: unknown;
 }

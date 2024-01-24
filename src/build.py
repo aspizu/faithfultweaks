@@ -45,7 +45,6 @@ class TweakData(msgspec.Struct):
 class Tweak(msgspec.Struct):
     data: TweakData
     files: list[str]
-    previewFiles: list[str]
     x64support: bool
 
 
@@ -68,18 +67,9 @@ for dir in Path("public/tweaks").iterdir():
             for i in dir.glob("x32/assets/**/*")
             if i.is_file()
         ],
-        previewFiles=[
-            i.relative_to(dir / "x32/preview").as_posix()
-            for i in dir.glob("x32/preview/**/*")
-            if i.is_file()
-        ],
         x64support=(dir / "x64").is_dir(),
     )
     data.tweaks[dir.name] = tweak
-    if len(tweak.previewFiles) == 0:
-        print("[red] <Warning> Tweak does not have preview screenshots. [/]")
-    if not tweak.x64support:
-        print("[red] <Warning> Tweak does not support x64. [/]")
 
 
 # data = Data(

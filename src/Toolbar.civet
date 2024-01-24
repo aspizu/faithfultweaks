@@ -1,0 +1,34 @@
+import {Box, Button, Flexpander, Icon, Radio} from bloom/components
+import {PackVariant, packVariant} from ./App.civet
+import {createPackage} from ./packager.civet
+import titleImage from "./assets/title.png"
+
+export default function Toolbar()
+    <Box gap=4 vcenter>
+        <img src=titleImage width="100rem" />
+        <Flexpander />
+        <Box gap=4>
+            <Box gap=4 vcenter>
+                <Radio
+                    active={packVariant.value === PackVariant.x32}
+                    onChange={ =>
+                        packVariant.value = PackVariant.x32
+                    }
+                />
+                x32
+            </Box>
+            <Box gap=2 vcenter>
+                <Radio
+                    active={packVariant.value === PackVariant.x64}
+                    onChange={ =>
+                        packVariant.value = PackVariant.x64
+                    }
+                />
+                x64
+            </Box>
+        </Box>
+        <Button iconLeft variant="accent" onClick=createPackage>
+            <Icon color="black">download</Icon>
+            Download
+        </Button>
+    </Box>

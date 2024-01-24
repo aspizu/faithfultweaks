@@ -1,0 +1,86 @@
+import {useSignal} from @preact/signals
+import {Row, Col, Flexpander, Text, Checkbox, Input, Icon, Switch} from bloom/components
+import {IconButton, PaletteButton} from bloom/components
+import {customOptionsBackground, data, packVariant} from ../App.civet
+
+export default function CustomizeOptionsBackground()
+    search := useSignal ""
+    <Col surface="card" padding=4 gap=4>
+        <Row>
+            <Col>
+                <Text size="lg" bold>Customize options background</Text>
+                <Text size="sm" color="gray">
+                    {if customOptionsBackground.value
+                    then "Default options background selected"
+                    else "Custom options background selected"}
+                </Text>
+            </Col>
+            <Flexpander />
+            <Switch
+                active=customOptionsBackground.value?
+                onChange={ =>
+                    if not customOptionsBackground.value
+                        customOptionsBackground.value =
+                            darken: true
+                            texture: "dirt"
+                    else
+                        customOptionsBackground.value = null
+                }
+            />
+        </Row>
+        <Row vcenter gap=2>
+            <Checkbox
+                active={
+                    not customOptionsBackground.value
+                    or customOptionsBackground.value.darken
+                }
+                onChange={ =>
+                    if customOptionsBackground.value
+                        customOptionsBackground.value = {
+                            ...customOptionsBackground.value
+                            darken: not customOptionsBackground.value.darken
+                        }
+                    else
+                        customOptionsBackground.value =
+                            darken: false
+                            texture: "dirt"
+                }
+            />
+            <Text>Darken</Text>
+        </Row>
+        <Input
+            {search.value}
+            onInput={(ev) =>
+                search.value = (ev.target as HTMLInputElement).value
+            }
+            placeholder="Search"
+        >
+            {if search.value then
+                <IconButton variant="overlay" size="sm" onClick={=> search.value = ""}>
+                    close
+                </IconButton>
+            }
+            <Icon size="sm">search</Icon>
+        </Input>
+        <Row gap=2 wrap>
+            {data.value.customOptionsBackgrounds
+                .filter (texture) =>
+                    texture
+                        .toLowerCase()
+                        .startsWith search.value.toLowerCase().trim()
+                .map (texture) =>
+                    <PaletteButton key={texture}
+                        active={customOptionsBackground.value?.texture === texture}
+                        color=`url('${packVariant.value}/assets/minecraft/textures/block/${texture}.png')`
+                        onClick={ =>
+                            customOptionsBackground.value = {
+                                darken: true
+                                ...customOptionsBackground.value
+                                texture: texture
+                            }
+                        }
+                    >
+                    </PaletteButton>
+            }
+        </Row>
+    </Col>

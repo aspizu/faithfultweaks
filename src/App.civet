@@ -1,0 +1,42 @@
+import {Signal, computed, signal} from @preact/signals
+
+import {Col} from bloom/components
+import Sidebar from ./Sidebar.civet
+import Toolbar from ./Toolbar.civet
+import TweaksGallery from ./TweaksGallery.civet
+import {Data} from ./types/Data
+
+screenWidth := signal screen.width
+
+document.addEventListener "resize", =>
+    screenWidth.value = screen.width
+
+export enum PackVariant
+    x32 = "x32"
+    x64 = "x64"
+
+$data := signal<Data|null> null
+export data := $data as Signal<Data>
+fetch("data.json").then async (v) =>
+    data.value = await v.json()
+
+export packVariant := signal(PackVariant.x32)
+export customOptionsBackground := signal<{darken: boolean, texture: string}|null> null
+export customSlimeColor := signal<{isCustom: boolean, color: string}|null> null
+export tweaks := signal<Set<string>> new Set()
+export isTweaksSelected := computed =>
+    customOptionsBackground.value !== null
+    or customSlimeColor.value !== null
+    or tweaks.value.size !== 0
+
+export default function App()
+    if not $data.value
+        <>Loading...</>
+    else
+        <Col padding=4 gap=4>
+            <Toolbar />
+            <div style={display: "grid", gap: "1rem", gridTemplateColumns: "20rem 1fr"}>
+                <Sidebar />
+                <TweaksGallery />
+            </div>
+        </Col>

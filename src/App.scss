@@ -242,12 +242,12 @@ body {
     box-shadow: 0 0.1rem 0.1rem 0 #0000003e;
     transition: all $transition-duration $transition-easing;
 
-    &:has(.active) {
+    &--active {
         background: $accent;
         border-color: $accent;
     }
 
-    & > div {
+    &__inner {
         transition: all $transition-duration $transition-easing;
         width: 0.75rem;
         height: 0.75rem;
@@ -260,16 +260,16 @@ body {
             background: #636363;
             scale: 1.1;
         }
+    }
 
-        &.active {
-            background: #000000;
-            cursor: auto;
-            scale: 1;
-        }
+    &--active &__inner {
+        background: #000000;
+        cursor: auto;
+        scale: 1;
     }
 }
 
-.Toggle {
+.Switch {
     $radius: 0.5rem;
     $padding: 0.2rem;
     $border: 0.1rem;
@@ -288,12 +288,12 @@ body {
         }
     }
 
-    &:has(.active) {
+    &--active {
         background: $accent;
         border-color: $accent;
     }
 
-    & > div {
+    &__inner {
         transition: all $transition-duration $transition-easing;
         left: $padding;
         top: $padding;
@@ -303,23 +303,23 @@ body {
         background: #6c6c6c;
         border-radius: 99999px;
         cursor: pointer;
-
-        &.active {
-            background: #141414;
-            left: auto;
-            right: $padding;
-        }
     }
 
-    &--disabled-true,
-    &--disabled-true > div {
+    &--active &__inner {
+        background: #141414;
+        left: auto;
+        right: $padding;
+    }
+
+    &--disabled,
+    &--disabled &__inner {
         cursor: not-allowed;
     }
 
-    &--disabled-true,
-    &--disabled-true:hover {
+    &--disabled,
+    &--disabled:hover {
         background: rgba(255, 255, 255, 0.05);
-        & > div {
+        &__inner {
             scale: 1;
         }
     }

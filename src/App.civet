@@ -1,9 +1,9 @@
 import {Signal, computed, signal} from @preact/signals
 
 import {Col} from bloom/components
-import Sidebar from ./Sidebar.civet
-import Toolbar from ./Toolbar.civet
-import TweaksGallery from ./TweaksGallery.civet
+import {Sidebar, SidebarSkeleton} from ./Sidebar.civet
+import {Toolbar, ToolbarSkeleton} from ./Toolbar.civet
+import {TweaksGallery, TweaksGallerySkeleton} from ./TweaksGallery.civet
 import {Data} from ./types/Data
 
 screenWidth := signal screen.width
@@ -31,7 +31,7 @@ export isTweaksSelected := computed =>
 
 export default function App()
     if not $data.value
-        <>Loading...</>
+        <AppSkeleton />
     else
         <Col padding=4 gap=4>
             <Toolbar />
@@ -40,3 +40,12 @@ export default function App()
                 <TweaksGallery />
             </div>
         </Col>
+
+function AppSkeleton()
+    <Col padding=4 gap=4>
+        <ToolbarSkeleton />
+        <div style={display: "grid", gap: "1rem", gridTemplateColumns: "20rem 1fr"}>
+            <SidebarSkeleton />
+            <TweaksGallerySkeleton />
+        </div>
+    </Col>

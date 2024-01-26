@@ -1,6 +1,6 @@
 import {batch, useSignal} from @preact/signals
 import {Row, Col, Flexpander, Button, Icon, IconButton, Modal} from bloom/components
-import {Text} from bloom/components
+import {Text, Skeleton} from bloom/components
 import {data, tweaks, packVariant} from ./App.civet
 import {createPortal} from preact/compat
 import {Signal} from @preact/signals
@@ -51,7 +51,7 @@ function RemoveAllTweaksModal({visible}: {visible: Signal<boolean>})
         </Col>
     </Modal>
 
-export default function Sidebar()
+export function Sidebar()
     removeAllTweaksModalVisible := useSignal false
     function showRemoveAllTweaksModal()
         removeAllTweaksModalVisible.value = true
@@ -78,4 +78,15 @@ export default function Sidebar()
             <RemoveAllTweaksModal visible=removeAllTweaksModalVisible />,
             modals
         }
+    </Col>
+
+export function SidebarSkeleton()
+    <Col gap=4>
+        <Skeleton variant="text" width={4} />
+        <Skeleton variant="input" />
+        <Skeleton variant="input" />
+        <Skeleton variant="input" />
+        <Skeleton variant="input" />
+        <Skeleton variant="input" />
+        <Skeleton variant="input" />
     </Col>

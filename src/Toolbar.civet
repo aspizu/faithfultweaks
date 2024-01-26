@@ -1,9 +1,9 @@
-import {Box, Button, Flexpander, Icon, Radio} from bloom/components
+import {Box, Skeleton, Button, Flexpander, Icon, Radio} from bloom/components
 import {PackVariant, packVariant} from ./App.civet
 import {createPackage} from ./packager.civet
 import titleImage from "./assets/title.png"
 
-export default function Toolbar()
+export function Toolbar()
     <Box gap=4 vcenter>
         <img src=titleImage width="100rem" />
         <Flexpander />
@@ -31,4 +31,11 @@ export default function Toolbar()
             <Icon color="black">download</Icon>
             Download
         </Button>
+    </Box>
+
+export function ToolbarSkeleton()
+    <Box gap=4 vcenter>
+        <Skeleton variant="input" width={1} />
+        <Flexpander />
+        <Skeleton variant="input" width={1} />
     </Box>

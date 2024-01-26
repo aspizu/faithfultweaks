@@ -1,11 +1,12 @@
 import {useSignal} from @preact/signals
-import {Col, Icon, IconButton, Input} from bloom/components
+import {Col, Icon, IconButton, Input, Skeleton} from bloom/components
 import {data} from ./App.civet
+import {repeat} from bloom/itertools
 import Tweak from ./components/Tweak.civet
 import CustomizeOptionsBackground from ./tweaks/CustomizeOptionsBackground.civet
 import CustomizeSlime from ./tweaks/CustomizeSlime.civet
 
-export default function TweaksGallery()
+export function TweaksGallery()
     search := useSignal("")
     <Col gap=4>
         <Input
@@ -40,5 +41,24 @@ export default function TweaksGallery()
                 .map [name, tweak] =>
                     <Tweak key={name} {name} {tweak} />
             }
+        </div>
+    </Col>
+
+export function TweaksGallerySkeleton()
+    <Col gap=4>
+        <Skeleton variant="input" />
+        <div
+            style={
+                display: "grid"
+                gap: "1rem"
+                gridTemplateColumns: "repeat(auto-fill, minmax(25rem, 1fr))"
+            }
+        >
+            {repeat(<Col surface="skeleton" padding=4 gap=4>
+                <Skeleton variant="text" />
+                <Skeleton variant="text" width={3} />
+                <Skeleton variant="text" width={4} />
+                <Skeleton variant="text" width={2} />
+            </Col>, 10).collect()}
         </div>
     </Col>

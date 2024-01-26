@@ -7,6 +7,9 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "node_modules": true,
-        "pnpm-lock.yaml": true
+        "pnpm-lock.yaml": true,
+        "bloom/": true,
+        "dist/": true,
+        ".vscode": true
     }
 }
